@@ -10,8 +10,8 @@
    MODO PRUEBA: los datos se guardan solo en este navegador
    (sirve para probar con varias pestañas en tu computador).
    ========================================================= */
-const SUPABASE_URL = "";      // ej: "https://abcdxyz.supabase.co"
-const SUPABASE_KEY = "";      // ej: "eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+const SUPABASE_URL = "https://fbmiazcvouagbrrswyfl.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZibWlhemN2b3VhZ2JycnN3eWZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ2OTQxOTMsImV4cCI6MjExMDI3MDE5M30.xf5C0FrFQR0xZjxkBtEwAk_Fd5YuCVR8Kb88s550BhE";
 
 /* --------------------------------------------------------- */
 const QuizDB = (() => {
