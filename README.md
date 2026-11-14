@@ -76,3 +76,39 @@ comprimidos no hay problema.
 
 Todos los textos de los lugares están en `script.js`, dentro de `LUGARES`, con su versión
 `es` (español) y `en` (inglés). Los textos generales están arriba, en `UI`.
+
+
+## Juego "Who knows more about Colombia?" (en vivo)
+
+| Archivo | Para qué sirve |
+|---|---|
+| `quiz.html` | El juego para los celulares (en inglés). Cada jugador escribe su nombre y responde 10 preguntas. 100 puntos por acierto. |
+| `panel.html` | Pantalla para el video beam: QR, ranking en vivo y botón del podio (oro, plata, bronce). |
+| `quiz.css` | Estilos del juego y del panel. |
+| `quiz-db.js` | Conexión con Supabase. Aquí se pegan la URL y la llave. |
+| `setup.sql` | Crea la tabla `players` en Supabase. |
+| `qr-quiz.png` | QR que lleva a `https://imzsebas.github.io/travel_agency/quiz.html` |
+
+### Conectar Supabase (una sola vez)
+
+1. Entra a https://supabase.com y crea un proyecto nuevo (gratis).
+2. Ve a **SQL Editor > New query**, pega todo el contenido de `setup.sql` y dale **Run**.
+3. Ve a **Project Settings > API** y copia:
+   - **Project URL**
+   - **anon public** (la llave pública)
+4. Abre `quiz-db.js` y pégalas en `SUPABASE_URL` y `SUPABASE_KEY`.
+5. Sube los cambios con `git add .`, `git commit` y `git push`.
+
+Mientras esos dos campos estén vacíos, el juego funciona en **modo prueba**: los puntajes se
+guardan solo en el navegador donde se juega. Sirve para probar abriendo `panel.html` en una
+pestaña y `quiz.html` en otras pestañas del mismo navegador.
+
+### Cómo usarlo en la exposición
+
+1. Proyecta `panel.html` en el video beam.
+2. Los compañeros escanean el QR, escriben su nombre y juegan.
+3. El ranking se mueve en vivo con cada respuesta.
+4. Cuando todos terminen, presiona **Show podium**.
+5. Para otra ronda, presiona **New game** dos veces (borra a todos los jugadores).
+
+Si cambias el nombre del repositorio o del usuario, el QR hay que generarlo de nuevo.

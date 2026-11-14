@@ -16,6 +16,13 @@ const UI = {
   es: {
     nav_intro: "La idea",
     nav_map: "Mapa",
+    nav_game: "Juego",
+    game_eyebrow: "Juego",
+    game_title: "¿Quién sabe más de Colombia?",
+    game_desc: "Pon a prueba lo que aprendiste: escanea el código, escribe tu nombre y responde 10 preguntas en inglés. Cada acierto suma 100 puntos y el ranking se ve en vivo.",
+    game_btn: "Jugar ahora",
+    game_panel: "Ver ranking en vivo",
+    game_scan: "Escanéame",
     tagline: "EXPLORA • DESCUBRE • VIAJA",
     hero_script: "¡Tu próxima aventura empieza aquí!",
     sv1: "Destinos únicos", sv2: "Planes a tu medida", sv3: "Viajes por Colombia", sv4: "Hoteles y posadas", sv5: "Tours guiados",
@@ -42,6 +49,13 @@ const UI = {
   en: {
     nav_intro: "The idea",
     nav_map: "Map",
+    nav_game: "Game",
+    game_eyebrow: "Game",
+    game_title: "Who knows more about Colombia?",
+    game_desc: "Test what you learned: scan the code, type your name and answer 10 questions. Every correct answer is worth 100 points and the ranking updates live.",
+    game_btn: "Play now",
+    game_panel: "Live leaderboard",
+    game_scan: "Scan me",
     tagline: "EXPLORE • DISCOVER • TRAVEL",
     hero_script: "Your next adventure starts here!",
     sv1: "Unique destinations", sv2: "Custom plans", sv3: "Trips across Colombia", sv4: "Hotels & guesthouses", sv5: "Guided tours",
@@ -382,7 +396,7 @@ $$("a", menu).forEach(a => a.addEventListener("click", () => {
 const secciones = [
   ["inicio", "Inicio"], ["intro", "Intro"],
   ...LUGARES.map(l => [l.id, l.es.nombre]),
-  ["mapa", "Mapa"], ["cierre", "Fin"]
+  ["mapa", "Mapa"], ["juego", "Juego"], ["cierre", "Fin"]
 ];
 $("#dots").innerHTML = secciones.map(([id, n]) => `<a href="#${id}" data-id="${id}"><span>${n}</span></a>`).join("");
 

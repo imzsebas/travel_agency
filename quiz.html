@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Who knows more about Colombia? · JDP &amp; SN Travel Agency</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+  <div class="rayos"></div>
+
+  <div class="app">
+    <header class="top">
+      <a href="index.html" class="top__logo"><img src="logo-jdpsn-small.webp" alt="JDP &amp; SN Travel Agency" /></a>
+      <div class="top__right">
+        <span class="chip-score" id="chipScore" hidden>0 pts</span>
+        <a href="index.html" class="volver">Back to site</a>
+      </div>
+    </header>
+
+    <!-- ========== 1. NAME ========== -->
+    <section class="pantalla activa" id="inicio">
+      <div class="emblema"><img src="logo-jdpsn.webp" alt="" /></div>
+      <h1>Who knows more about <b>Colombia</b>?</h1>
+      <p>Show what you learned about Providencia, the Melcocho River, the Santa Rosa de Cabal hot springs and Nevado del Ruiz.</p>
+      <ul class="reglas">
+        <li>10 questions with options A, B, C and D.</li>
+        <li>Every correct answer gives you <b>100 points</b>.</li>
+        <li>If you miss one, keep going: you still play all 10.</li>
+        <li>Watch your position live on the big screen.</li>
+      </ul>
+      <form class="nombre" id="formNombre" autocomplete="off">
+        <label for="nombre">Your name</label>
+        <input id="nombre" maxlength="20" placeholder="Type your name" required />
+        <p class="error" id="errorNombre"></p>
+        <button class="btn" type="submit" id="btnEmpezar">Start!</button>
+      </form>
+      <p class="modo" id="modoAviso" hidden>Test mode: scores are saved only on this device.</p>
+    </section>
+
+    <!-- ========== 2. GAME ========== -->
+    <main class="juego oculto" id="juego">
+      <div class="centro">
+        <div class="emblema emblema--juego"><div class="emblema__titulo">Who knows<br>more about <b>Colombia</b>?</div></div>
+        <p class="contador" id="contador"></p>
+
+        <div class="fila pregunta"><div class="barra"><div class="barra__in" id="textoPregunta"></div></div></div>
+        <div class="opciones" id="opciones"></div>
+
+        <button class="btn siguiente" id="btnSiguiente">Next</button>
+      </div>
+
+      <aside class="escalera">
+        <p class="escalera__titulo">Your progress</p>
+        <ol id="escalera"></ol>
+        <p class="escalera__total">Score <b id="totalPuntos">0</b></p>
+      </aside>
+    </main>
+
+    <!-- ========== 3. RESULT ========== -->
+    <section class="pantalla" id="final">
+      <h2 id="finalTitulo"></h2>
+      <div class="premio"><span id="finalPuntos">0</span> <small>points</small></div>
+      <p id="finalTexto"></p>
+      <div class="posicion" id="posicion"></div>
+
+      <div class="top3">
+        <p class="top3__titulo">Live top 3</p>
+        <ol id="top3"></ol>
+      </div>
+
+      <div class="acciones">
+        <a class="btn" href="panel.html">See leaderboard</a>
+        <a class="btn btn--sec" href="index.html">Back to site</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="confeti" id="confeti"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="quiz-db.js"></script>
+  <script>
+    /* =========================================================
+       QUESTIONS · "ok" is the index of the correct answer
+       ========================================================= */
+    const QUESTIONS = [
+      { q: "Which sea is Providencia Island in?", r: ["Caribbean Sea", "Pacific Ocean", "Mediterranean Sea", "North Sea"], ok: 0 },
+      { q: "How many shades of blue is Providencia's sea said to have?", r: ["Seven", "Three", "Five", "Ten"], ok: 0 },
+      { q: "Which wooden bridge connects Providencia with Santa Catalina Island?", r: ["The Lovers' Bridge", "Boyacá Bridge", "Pumarejo Bridge", "Bridge of the Americas"], ok: 0 },
+      { q: "Which department is the Melcocho River in?", r: ["Antioquia", "Caldas", "Tolima", "Risaralda"], ok: 0 },
+      { q: "What makes the Melcocho River's water famous?", r: ["It's so clear you can see the bottom", "It's warm all year", "It's salty like the sea", "It's red"], ok: 0 },
+      { q: "What do you need to visit the Melcocho River?", r: ["A prior booking", "A passport", "To arrive by plane", "To be over 60"], ok: 0 },
+      { q: "Where does the heat of Santa Rosa de Cabal's hot springs come from?", r: ["From nearby volcanoes", "From the midday sun", "From electric heaters", "From sea currents"], ok: 0 },
+      { q: "What is Santa Rosa de Cabal's most famous food?", r: ["Santa Rosa chorizo", "Arepa de huevo", "Tolima tamale", "Fried fish with plantain"], ok: 0 },
+      { q: "How high is the summit of Nevado del Ruiz?", r: ["5,321 meters", "3,200 meters", "4,100 meters", "6,500 meters"], ok: 0 },
+      { q: "What is the volcanic ash desert where the Nevado del Ruiz visit ends called?", r: ["Valley of the Tombs", "Tatacoa Desert", "Cocora Valley", "Cabo de la Vela"], ok: 0 }
+    ];
+    const POINTS = 100;
+    const ME_KEY = "jdpsn-quiz-me";
+
+    /* ---------- State ---------- */
+    const $ = (s) => document.querySelector(s);
+    let me = null;          // { id, name, nivel, score, results, orden }
+    let bloqueado = false;
+
+    const guardarYo = () => { try { sessionStorage.setItem(ME_KEY, JSON.stringify(me)); } catch (e) {} };
+    const borrarYo = () => { try { sessionStorage.removeItem(ME_KEY); } catch (e) {} };
+    const mezclar = (a) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+    function mostrar(id) {
+      ["inicio", "final"].forEach(p => $("#" + p).classList.toggle("activa", p === id));
+      $("#juego").classList.toggle("oculto", id !== "juego");
+      $("#chipScore").hidden = id === "inicio";
+      window.scrollTo(0, 0);
+    }
+
+    /* ---------- 1. Join with a name ---------- */
+    $("#formNombre").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = $("#nombre").value.trim().replace(/\s+/g, " ");
+      if (name.length < 2) { $("#errorNombre").textContent = "Please type at least 2 letters."; return; }
+      $("#btnEmpezar").disabled = true; $("#btnEmpezar").textContent = "Joining...";
+      try {
+        const p = await QuizDB.join(name);
+        me = { id: p.id, name, nivel: 0, score: 0, results: "", orden: QUESTIONS.map(() => mezclar([0, 1, 2, 3])) };
+        guardarYo();
+        pintarPregunta();
+        mostrar("juego");
+      } catch (err) {
+        $("#errorNombre").textContent = "Could not join the game. Check your internet and try again.";
+        console.error(err);
+      }
+      $("#btnEmpezar").disabled = false; $("#btnEmpezar").textContent = "Start!";
+    });
+
+    /* ---------- 2. Progress ladder ---------- */
+    function pintarEscalera() {
+      $("#escalera").innerHTML = QUESTIONS.map((_, i) => {
+        let estado = "", texto = `${POINTS}`;
+        if (i < me.results.length) { estado = me.results[i] === "1" ? "bien" : "mal"; texto = me.results[i] === "1" ? `+${POINTS}` : "0"; }
+        else if (i === me.nivel) estado = "actual";
+        return `<li class="${estado}"><span>${i + 1}</span><span class="monto">${texto}</span></li>`;
+      }).join("");
+      $("#totalPuntos").textContent = me.score;
+      $("#chipScore").textContent = `${me.score} pts`;
+    }
+
+    function pintarPregunta() {
+      const P = QUESTIONS[me.nivel];
+      bloqueado = false;
+      $("#contador").textContent = `Question ${me.nivel + 1} of 10 · ${me.name}`;
+      $("#textoPregunta").textContent = P.q;
+      $("#opciones").innerHTML = me.orden[me.nivel].map((idx, k) => `
+        <div class="fila"><button class="opcion barra" data-idx="${idx}">
+          <span class="barra__in"><span class="letra">${"ABCD"[k]}:</span><span>${escaparHTML(P.r[idx])}</span></span>
+        </button></div>`).join("");
+      $("#btnSiguiente").classList.remove("visible");
+      pintarEscalera();
+    }
+
+    /* ---------- Answer ---------- */
+    $("#opciones").addEventListener("click", (e) => {
+      const btn = e.target.closest(".opcion");
+      if (!btn || bloqueado) return;
+      bloqueado = true;
+      const elegida = +btn.dataset.idx;
+      const P = QUESTIONS[me.nivel];
+      document.querySelectorAll(".opcion").forEach(b => (b.disabled = true));
+      btn.classList.add("elegida");
+
+      setTimeout(async () => {
+        btn.classList.remove("elegida");
+        document.querySelector(`.opcion[data-idx="${P.ok}"]`).classList.add("correcta");
+        const acierto = elegida === P.ok;
+        if (!acierto) btn.classList.add("mala");
+
+        me.results += acierto ? "1" : "0";
+        me.score += acierto ? POINTS : 0;
+        const terminado = me.results.length === QUESTIONS.length;
+        guardarYo();
+        pintarEscalera();
+        if (acierto) puntosFlotantes(btn);
+
+        $("#btnSiguiente").textContent = terminado ? "See my result" : "Next";
+        $("#btnSiguiente").classList.add("visible");
+
+        try {
+          await QuizDB.update(me.id, { score: me.score, answered: me.results.length, results: me.results, finished: terminado });
+        } catch (err) { console.error(err); }
+      }, 1600);
+    });
+
+    $("#btnSiguiente").addEventListener("click", () => {
+      if (me.results.length === QUESTIONS.length) return pantallaFinal();
+      me.nivel = me.results.length;
+      guardarYo();
+      pintarPregunta();
+    });
+
+    function puntosFlotantes(btn) {
+      const r = btn.getBoundingClientRect();
+      const s = document.createElement("span");
+      s.className = "flotante";
+      s.textContent = `+${POINTS}`;
+      s.style.left = r.left + r.width / 2 + "px";
+      s.style.top = r.top + "px";
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1200);
+    }
+
+    /* ---------- 3. Result with live position ---------- */
+    let escuchando = false;
+    async function pantallaFinal() {
+      const aciertos = [...me.results].filter(c => c === "1").length;
+      $("#finalTitulo").innerHTML = aciertos >= 8 ? `Amazing, <b>${escaparHTML(me.name)}</b>!` : aciertos >= 5 ? `Well done, <b>${escaparHTML(me.name)}</b>!` : `Thanks for playing, <b>${escaparHTML(me.name)}</b>!`;
+      $("#finalPuntos").textContent = me.score;
+      $("#finalTexto").textContent = `You got ${aciertos} of 10 questions right.`;
+      if (aciertos === 10) lanzarConfeti();
+      mostrar("final");
+      await actualizarRanking();
+      if (!escuchando) { escuchando = true; QuizDB.subscribe(actualizarRanking); }
+    }
+
+    async function actualizarRanking() {
+      if (!me) return;
+      try {
+        const lista = await QuizDB.list();
+        const pos = lista.findIndex(p => p.id === me.id) + 1;
+        $("#posicion").innerHTML = pos ? `Your position: <b>#${pos}</b> of ${lista.length}` : "";
+        const medallas = ["oro", "plata", "bronce"];
+        $("#top3").innerHTML = lista.slice(0, 3).map((p, i) => `
+          <li class="${p.id === me.id ? "yo" : ""}"><span class="medalla ${medallas[i]}">${i + 1}</span>
+          <span class="t3nombre">${escaparHTML(p.name)}</span><span class="t3pts">${p.score} pts</span></li>`).join("");
+      } catch (err) { console.error(err); }
+    }
+
+    function lanzarConfeti() {
+      const colores = ["#FCD116", "#003893", "#CE1126", "#ffffff"];
+      const c = $("#confeti"); c.innerHTML = "";
+      for (let i = 0; i < 120; i++) {
+        const p = document.createElement("i");
+        p.style.left = Math.random() * 100 + "%";
+        p.style.background = colores[i % 4];
+        p.style.animationDuration = 2.5 + Math.random() * 2.5 + "s";
+        p.style.animationDelay = Math.random() * 1.2 + "s";
+        c.appendChild(p);
+      }
+      setTimeout(() => (c.innerHTML = ""), 6000);
+    }
+
+    /* ---------- Resume if the page was reloaded ---------- */
+    (async () => {
+      $("#modoAviso").hidden = QuizDB.modo !== "local";
+      let guardado = null;
+      try { guardado = JSON.parse(sessionStorage.getItem(ME_KEY)); } catch (e) {}
+      if (!guardado) return;
+      const existe = await QuizDB.get(guardado.id).catch(() => null);
+      if (!existe) { borrarYo(); return; }   // the host started a new game
+      me = guardado;
+      if (me.results.length === QUESTIONS.length) return pantallaFinal();
+      me.nivel = me.results.length;
+      pintarPregunta();
+      mostrar("juego");
+    })();
+  </script>
+</body>
+</html>

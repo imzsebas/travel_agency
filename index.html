@@ -32,6 +32,7 @@
       <a href="#santarosa">Santa Rosa</a>
       <a href="#nevado">Nevado del Ruiz</a>
       <a href="#mapa" data-i18n="nav_map">Mapa</a>
+      <a href="#juego" data-i18n="nav_game">Juego</a>
     </nav>
 
     <div class="controls">
@@ -116,6 +117,25 @@
     </div>
   </section>
 
+  <!-- ===================== JUEGO CON QR ===================== -->
+  <section class="game" id="juego">
+    <div class="game__inner reveal">
+      <div class="game__text">
+        <p class="eyebrow" data-i18n="game_eyebrow">Juego</p>
+        <h2 class="game__title" data-i18n="game_title">¿Quién sabe más de Colombia?</h2>
+        <p class="game__desc" data-i18n="game_desc">Pon a prueba lo que aprendiste: escanea el código, escribe tu nombre y responde 10 preguntas en inglés. Cada acierto suma 100 puntos y el ranking se ve en vivo.</p>
+        <div class="game__btns">
+          <a href="quiz.html" class="btn" data-i18n="game_btn">Jugar ahora</a>
+          <a href="panel.html" class="btn btn--line" data-i18n="game_panel">Ver ranking en vivo</a>
+        </div>
+      </div>
+      <div class="game__qr">
+        <img src="qr-quiz.png" alt="Código QR del juego" />
+        <span data-i18n="game_scan">Escanéame</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== CIERRE ===================== -->
   <section class="outro" id="cierre">
     <div class="media" data-video="videos/cierre.mp4" data-poster="images/cierre.jpg" data-colors="#CE1126,#e8a200,#FCD116"></div>
@@ -132,8 +152,8 @@
   <!-- ===================== PIE ===================== -->
   <footer class="footer">
     <img src="logo-jdpsn-small.webp" alt="JDP &amp; SN Travel Agency" class="footer__img" />
-    <p data-i18n="footer_made">Centro de idiomas | Universidad de Córdoba</p>
-    <p class="footer__credits" data-i18n="footer_credits">Fotos y videos reales: créditos a sus autores.</p>
+    <p data-i18n="footer_made">Proyecto académico · Universidad de Córdoba</p>
+    <p class="footer__credits" data-i18n="footer_credits">Algunas imágenes fueron generadas con inteligencia artificial y son ilustrativas. Fotos y videos reales: créditos a sus autores.</p>
   </footer>
 
   <div class="toast" id="toast"></div>
