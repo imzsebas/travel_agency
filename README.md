@@ -8,7 +8,7 @@ del mar a la montaña:
 3. **Termales de Santa Rosa de Cabal** (Risaralda)
 4. **Nevado del Ruiz** (Caldas y Tolima)
 
-Usa la identidad de JDP & SN Travel Agency (logo oficial `logo-jdpsn.webp`, versión pequeña `logo-jdpsn-small.webp`, ícono `favicon.png` y aviones animados `avion.svg`), ondas con los colores de la bandera, videos de fondo, galerías de fotos, mapa, un switch de idioma **ES / EN** y un botón de música.
+Usa la identidad de JDP & SN Travel Agency (logo oficial `logo-jdpsn.webp`, versión pequeña `logo-jdpsn-small.webp`, ícono `favicon.png` y aviones animados `avion.svg`), ondas con los colores de la bandera, videos de fondo, mapa, un switch de idioma **ES / EN** y un botón de música.
 
 ## Carpetas
 
@@ -50,13 +50,6 @@ Recomendado: clips de 10 a 20 segundos, sin sonido, en 1280×720 o 1920×1080, d
 
 - **Foto de respaldo del video** (se ve mientras carga o en celulares con ahorro de datos):
   `hero.jpg`, `providencia.jpg`, `melcocho.jpg`, `santarosa.jpg`, `nevado.jpg`, `cierre.jpg`
-- **Galería** (4 fotos por lugar):
-  - `providencia-1.jpg` a `providencia-4.jpg`
-  - `melcocho-1.jpg` a `melcocho-4.jpg`
-  - `santarosa-1.jpg` a `santarosa-4.jpg`
-  - `nevado-1.jpg` a `nevado-4.jpg`
-
-La foto `-1` de cada lugar es la más grande de la galería, así que usa la mejor ahí.
 
 ### Música (carpeta `musica/`)
 

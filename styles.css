@@ -724,3 +724,7 @@ img { display: block; max-width: 100%; }
 @supports not (backdrop-filter: blur(1px)) {
   .chapter__body { background: rgba(11, 31, 77, 0.85); }
 }
+
+/* Sin galerías: espacio al final de cada capítulo para que se vea el video */
+.chapter__body { margin-bottom: 0; }
+.chapter { padding-bottom: 35vh; }

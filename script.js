@@ -99,8 +99,7 @@ const LUGARES = [
         "Esa barrera es la más extensa de Colombia y una de las más largas del mundo, protegida por el Parque Nacional Old Providence McBean Lagoon. Aquí la gente es raizal, habla inglés criollo, vive de la pesca y del mar, y cuida su isla como un tesoro.",
         "Un puente de madera de colores, el Puente de los Enamorados, la une con la pequeña isla de Santa Catalina. Al atardecer, cruzarlo es uno de esos momentos que no se olvidan."
       ],
-      datos: [["7", "tonos de azul en su mar"], ["3.ª", "barrera de coral más larga del mundo"], ["17 km²", "de isla, para recorrer sin afán"], ["15 min", "en avión desde San Andrés"]],
-      fotos: ["Cayo Cangrejo desde el agua", "Puente de los Enamorados", "Arrecife y peces de colores", "Atardecer en Santa Catalina"]
+      datos: [["7", "tonos de azul en su mar"], ["3.ª", "barrera de coral más larga del mundo"], ["17 km²", "de isla, para recorrer sin afán"], ["15 min", "en avión desde San Andrés"]]
     },
     en: {
       lugar: "San Andrés Archipelago · Caribbean",
@@ -111,8 +110,7 @@ const LUGARES = [
         "That reef is the largest in Colombia and one of the longest in the world, protected by the Old Providence McBean Lagoon National Park. The people here are Raizal, speak English Creole, live from fishing and the sea, and look after their island like a treasure.",
         "A colorful wooden bridge, the Lovers' Bridge, connects it to the tiny island of Santa Catalina. Crossing it at sunset is one of those moments you never forget."
       ],
-      datos: [["7", "shades of blue in its sea"], ["3rd", "longest coral reef in the world"], ["17 km²", "of island to explore slowly"], ["15 min", "by plane from San Andrés"]],
-      fotos: ["Crab Cay from the water", "The Lovers' Bridge", "Reef and colorful fish", "Sunset in Santa Catalina"]
+      datos: [["7", "shades of blue in its sea"], ["3rd", "longest coral reef in the world"], ["17 km²", "of island to explore slowly"], ["15 min", "by plane from San Andrés"]]
     }
   },
   {
@@ -130,8 +128,7 @@ const LUGARES = [
         "El río baja por un cañón de rocas enormes y bosque verde, formando charcos, pozos y pequeñas cascadas. Caminar por su orilla es escuchar solo el agua, los pájaros y el viento entre los árboles.",
         "Lo más bonito es cómo lo cuidan: la comunidad campesina organizó el turismo para que no se dañe. Solo se entra con reserva previa y el río se cierra algunos días al año para que descanse."
       ],
-      datos: [["~2 h", "desde Medellín por carretera"], ["Cristal", "agua tan clara que se ve el fondo"], ["Reserva", "previa obligatoria para entrar"], ["Cañón", "de rocas, bosque y cascadas"]],
-      fotos: ["Agua cristalina sobre las piedras", "El cañón del río", "Charco natural", "Sendero entre el bosque"]
+      datos: [["~2 h", "desde Medellín por carretera"], ["Cristal", "agua tan clara que se ve el fondo"], ["Reserva", "previa obligatoria para entrar"], ["Cañón", "de rocas, bosque y cascadas"]]
     },
     en: {
       lugar: "Eastern Antioquia",
@@ -142,8 +139,7 @@ const LUGARES = [
         "The river runs through a canyon of huge rocks and green forest, creating pools, swimming holes and small waterfalls. Walking along its banks means hearing only the water, the birds and the wind in the trees.",
         "The most beautiful part is how it is protected: the local farming community organized tourism so the river is not harmed. You can only visit with a prior booking, and the river closes some days a year to rest."
       ],
-      datos: [["~2 h", "by road from Medellín"], ["Glass", "water so clear you can see the bottom"], ["Booking", "required before visiting"], ["Canyon", "of rocks, forest and waterfalls"]],
-      fotos: ["Clear water over the stones", "The river canyon", "Natural pool", "Trail through the forest"]
+      datos: [["~2 h", "by road from Medellín"], ["Glass", "water so clear you can see the bottom"], ["Booking", "required before visiting"], ["Canyon", "of rocks, forest and waterfalls"]]
     }
   },
   {
@@ -161,8 +157,7 @@ const LUGARES = [
         "Lo más impresionante es el paisaje: los termales están al pie de cascadas altísimas que caen por la montaña. Estar dentro del agua caliente, con el aire frío en la cara y el sonido de la cascada, es pura magia.",
         "Más arriba, entre la niebla, está la Reserva Termal San Vicente, un lugar más salvaje y escondido. Y de vuelta en el pueblo, no te puedes ir sin probar el famoso chorizo santarrosano."
       ],
-      datos: [["3", "complejos termales famosos"], ["Volcán", "el origen del agua caliente"], ["Cascadas", "que caen junto a las piscinas"], ["Chorizo", "santarrosano, sabor obligado"]],
-      fotos: ["Piscina termal con vapor", "La gran cascada", "Bosque entre la niebla", "Termales al anochecer"]
+      datos: [["3", "complejos termales famosos"], ["Volcán", "el origen del agua caliente"], ["Cascadas", "que caen junto a las piscinas"], ["Chorizo", "santarrosano, sabor obligado"]]
     },
     en: {
       lugar: "Santa Rosa de Cabal · Risaralda",
@@ -173,8 +168,7 @@ const LUGARES = [
         "The most impressive part is the landscape: the hot springs sit at the foot of very tall waterfalls tumbling down the mountain. Being in the warm water, with cold air on your face and the sound of the falls, is pure magic.",
         "Higher up, in the mist, is the San Vicente Thermal Reserve, a wilder and more hidden spot. And back in town, you can't leave without trying the famous Santa Rosa chorizo."
       ],
-      datos: [["3", "famous hot spring complexes"], ["Volcano", "the source of the hot water"], ["Waterfalls", "falling right next to the pools"], ["Chorizo", "from Santa Rosa, a must-try"]],
-      fotos: ["Steaming thermal pool", "The big waterfall", "Forest in the mist", "Hot springs at dusk"]
+      datos: [["3", "famous hot spring complexes"], ["Volcano", "the source of the hot water"], ["Waterfalls", "falling right next to the pools"], ["Chorizo", "from Santa Rosa, a must-try"]]
     }
   },
   {
@@ -192,8 +186,7 @@ const LUGARES = [
         "Para llegar se sube desde Manizales hasta el sector Brisas, a más de 4.000 metros de altura. Desde ahí se camina hasta el Valle de las Tumbas, un desierto de ceniza volcánica de colores grises y rojizos con vista al cráter y a los glaciares. En el camino aparecen páramos llenos de frailejones y lagunas de origen glaciar.",
         "Es un volcán activo, vigilado todo el tiempo por el Servicio Geológico Colombiano, y su glaciar se ha reducido mucho en las últimas décadas. Por eso se visita con guía, solo en las zonas permitidas y revisando antes el estado de alerta. Verlo de cerca es un privilegio que hay que cuidar."
       ],
-      datos: [["5.321 m", "de altura en su cumbre"], ["4.400 m", "Valle de las Tumbas, punto de la visita"], ["1974", "año de creación del parque"], ["Glaciar", "uno de los pocos que quedan en Colombia"]],
-      fotos: ["La cumbre nevada entre las nubes", "Valle de las Tumbas", "Frailejones en el páramo", "Laguna glaciar en el parque"]
+      datos: [["5.321 m", "de altura en su cumbre"], ["4.400 m", "Valle de las Tumbas, punto de la visita"], ["1974", "año de creación del parque"], ["Glaciar", "uno de los pocos que quedan en Colombia"]]
     },
     en: {
       lugar: "Between Caldas and Tolima",
@@ -204,8 +197,7 @@ const LUGARES = [
         "To get there you drive up from Manizales to the Brisas sector, more than 4,000 meters high. From there you walk to the Valley of the Tombs, a desert of volcanic ash in grey and reddish tones with views of the crater and the glaciers. Along the way you find páramos full of frailejones and glacial lakes.",
         "It is an active volcano, monitored at all times by the Colombian Geological Service, and its glacier has shrunk a lot in recent decades. That is why it is visited with a guide, only in permitted areas and after checking the alert level. Seeing it up close is a privilege worth protecting."
       ],
-      datos: [["5,321 m", "high at its summit"], ["4,400 m", "Valley of the Tombs, the visit point"], ["1974", "year the park was created"], ["Glacier", "one of the few left in Colombia"]],
-      fotos: ["The snowy summit among the clouds", "Valley of the Tombs", "Frailejones in the páramo", "Glacial lake in the park"]
+      datos: [["5,321 m", "high at its summit"], ["4,400 m", "Valley of the Tombs, the visit point"], ["1974", "year the park was created"], ["Glacier", "one of the few left in Colombia"]]
     }
   }
 ];
@@ -292,21 +284,9 @@ LUGARES.forEach((l, i) => {
       <div class="chapter__text reveal"></div>
       <ul class="facts reveal"></ul>
     </div>
-    <div class="gallery">
-      ${[1, 2, 3, 4].map(n => `
-        <figure class="gallery__item reveal" data-lugar="${i}" data-foto="${n - 1}">
-          <span class="gallery__icon">${ICONOS[l.icono]}</span>
-          <div class="gallery__img" style='background-image:${fotos(`images/${l.id}-${n}`)}'></div>
-          <figcaption></figcaption>
-        </figure>`).join("")}
-    </div>
   `;
   contenedor.appendChild(sec);
 
-  // Degradado de respaldo de cada foto de la galería
-  $$(".gallery__item", sec).forEach((item, k) => {
-    item.style.background = `linear-gradient(${135 + k * 40}deg, ${l.colores[0]}, ${l.colores[k % 2 ? 1 : 2]})`;
-  });
 });
 
 // Pinta los textos de los capítulos en el idioma actual
@@ -321,7 +301,6 @@ function textosCapitulos() {
     `;
     $(".chapter__text", sec).innerHTML = d.texto.map(p => `<p>${p}</p>`).join("");
     $(".facts", sec).innerHTML = d.datos.map(([b, s]) => `<li class="fact"><b>${b}</b><span>${s}</span></li>`).join("");
-    $$(".gallery__item figcaption", sec).forEach((fc, k) => (fc.textContent = d.fotos[k]));
   });
 }
 
@@ -450,52 +429,6 @@ for (let i = 0; i < (innerWidth < 760 ? 3 : 6); i++) {
   b.style.animationDelay = -Math.random() * 20 + "s";
   zona.appendChild(b);
 }
-
-/* ---------------- VISOR DE FOTOS ---------------- */
-const lb = $("#lightbox");
-let lbLugar = 0, lbFoto = 0;
-
-function mostrarFoto() {
-  const l = LUGARES[lbLugar];
-  $("#lbImg").innerHTML = `<span class="gallery__icon">${ICONOS[l.icono]}</span>`;
-  $("#lbImg").style.backgroundImage = fotos(`images/${l.id}-${lbFoto + 1}`);
-  $("#lbCaption").textContent = `${l[idioma].nombre} · ${l[idioma].fotos[lbFoto]}`;
-  // si la foto carga, quitamos el ícono de respaldo
-  ["jpg", "jpeg", "png", "webp"].forEach(ext => {
-    const prueba = new Image();
-    prueba.onload = () => { const ic = $("#lbImg .gallery__icon"); if (ic) ic.remove(); };
-    prueba.src = `images/${l.id}-${lbFoto + 1}.${ext}`;
-  });
-}
-function abrirVisor(lugar, foto) {
-  lbLugar = lugar; lbFoto = foto;
-  mostrarFoto();
-  lb.classList.add("is-open");
-  document.body.style.overflow = "hidden";
-}
-function cerrarVisor() {
-  lb.classList.remove("is-open");
-  document.body.style.overflow = "";
-}
-function moverFoto(paso) {
-  lbFoto = (lbFoto + paso + 4) % 4;
-  mostrarFoto();
-}
-
-contenedor.addEventListener("click", e => {
-  const item = e.target.closest(".gallery__item");
-  if (item) abrirVisor(+item.dataset.lugar, +item.dataset.foto);
-});
-$("#lbClose").addEventListener("click", cerrarVisor);
-$("#lbPrev").addEventListener("click", () => moverFoto(-1));
-$("#lbNext").addEventListener("click", () => moverFoto(1));
-lb.addEventListener("click", e => { if (e.target === lb) cerrarVisor(); });
-document.addEventListener("keydown", e => {
-  if (!lb.classList.contains("is-open")) return;
-  if (e.key === "Escape") cerrarVisor();
-  if (e.key === "ArrowRight") moverFoto(1);
-  if (e.key === "ArrowLeft") moverFoto(-1);
-});
 
 /* ---------------- MAPA ---------------- */
 let mapa = null;
