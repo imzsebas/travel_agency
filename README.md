@@ -89,19 +89,17 @@ Todos los textos de los lugares están en `script.js`, dentro de `LUGARES`, con 
 | `setup.sql` | Crea la tabla `players` en Supabase. |
 | `qr-quiz.png` | QR que lleva a `https://imzsebas.github.io/travel_agency/quiz.html` |
 
-### Conectar Supabase (una sola vez)
+### Base de datos (ya conectada)
 
-1. Entra a https://supabase.com y crea un proyecto nuevo (gratis).
-2. Ve a **SQL Editor > New query**, pega todo el contenido de `setup.sql` y dale **Run**.
-3. Ve a **Project Settings > API** y copia:
-   - **Project URL**
-   - **anon public** (la llave pública)
-4. Abre `quiz-db.js` y pégalas en `SUPABASE_URL` y `SUPABASE_KEY`.
-5. Sube los cambios con `git add .`, `git commit` y `git push`.
+- Proyecto de Supabase: **jdp-sn-quiz**, en la organización **Sebas Project**.
+- URL: `https://fbmiazcvouagbrrswyfl.supabase.co`
+- La tabla `players` ya está creada, con permisos y tiempo real activados.
+- `quiz-db.js` ya tiene la URL y la llave pública (anon). Esa llave es segura en el código;
+  la que nunca se debe poner es la `service_role` / `secret`.
+- `setup.sql` queda solo como respaldo, por si algún día creas otro proyecto.
 
-Mientras esos dos campos estén vacíos, el juego funciona en **modo prueba**: los puntajes se
-guardan solo en el navegador donde se juega. Sirve para probar abriendo `panel.html` en una
-pestaña y `quiz.html` en otras pestañas del mismo navegador.
+Nota: los proyectos gratis de Supabase se pausan tras unos días sin uso. Si el juego deja de
+guardar, entra a supabase.com y dale **Restore** al proyecto jdp-sn-quiz.
 
 ### Cómo usarlo en la exposición
 

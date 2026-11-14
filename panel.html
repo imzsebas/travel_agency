@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="quiz.css" />
+  <link rel="stylesheet" href="quiz.css?v=6" />
   <style>
     /* =========================================================
        PANEL EN VIVO · para proyectar en el video beam
@@ -61,6 +61,11 @@
     .progreso i.a { background: var(--naranja); animation: latido 1.2s infinite; }
     .jpuntos { text-align: right; font-weight: 900; font-size: 1.5rem; color: var(--amarillo); }
     .jpuntos small { font-size: 0.55em; color: var(--plata); }
+    .conexion { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 0.85rem; }
+    .conexion i { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .conexion.ok { color: #8ff0a9; } .conexion.ok i { background: #2fd162; box-shadow: 0 0 8px #2fd162; }
+    .conexion.prueba { color: var(--naranja); } .conexion.prueba i { background: var(--naranja); }
+    .conexion.mal { color: #ff8a95; } .conexion.mal i { background: var(--rojo); }
     .vacio { text-align: center; padding: 3rem 1rem; color: var(--plata); font-weight: 700; font-size: 1.2rem; }
 
     /* =================== PODIO =================== */
@@ -140,7 +145,7 @@
           <button class="btn" id="btnPodio">Show podium</button>
           <button class="btn btn--rojo" id="btnReiniciar">New game</button>
         </div>
-        <p class="modo" id="modoAviso" hidden>Test mode: only players on this computer appear here.</p>
+        <p class="conexion" id="conexion"></p>
       </aside>
 
       <!-- Tabla en vivo -->
@@ -163,12 +168,19 @@
 
   <div class="confeti" id="confeti"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="quiz-db.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="quiz-db.js?v=6"></script>
   <script>
     const $ = (s) => document.querySelector(s);
     $("#enlace").textContent = location.href.replace(/panel\.html.*$/, "quiz.html");
-    $("#modoAviso").hidden = QuizDB.modo !== "local";
+    const estados = {
+      supabase: ["ok", "Database connected"],
+      local: ["prueba", "Test mode: only players on this computer appear here"],
+      error: ["mal", "Could not connect to the database. Reload the page."]
+    };
+    const [clase, texto] = estados[QuizDB.modo];
+    $("#conexion").className = "conexion " + clase;
+    $("#conexion").innerHTML = `<i></i>${texto}`;
 
     let ultimaLista = [];
     let firma = {};   // para saber qué fila cambió y hacerla brillar

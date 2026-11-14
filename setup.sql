@@ -1,14 +1,15 @@
 -- =========================================================
 -- QUIZ JDP & SN · tabla de jugadores para Supabase
--- Pega todo esto en Supabase > SQL Editor > New query > Run
+-- YA ESTÁ APLICADO en el proyecto jdp-sn-quiz (Sebas Project).
+-- Solo úsalo si algún día creas otro proyecto: SQL Editor > New query > Run
 -- =========================================================
 
 create table if not exists public.players (
   id          uuid primary key default gen_random_uuid(),
   name        text not null check (char_length(name) between 1 and 20),
-  score       int  not null default 0,
-  answered    int  not null default 0,          -- cuántas preguntas ha respondido (0 a 10)
-  results     text not null default '',         -- '1' acierto, '0' fallo, ej: '1101'
+  score       int  not null default 0 check (score between 0 and 1000),
+  answered    int  not null default 0 check (answered between 0 and 10),  -- preguntas respondidas
+  results     text not null default '' check (results ~ '^[01]{0,10}$'),  -- '1' acierto, '0' fallo
   finished    boolean not null default false,
   created_at  timestamptz not null default now(),
   updated_at  timestamptz not null default now()

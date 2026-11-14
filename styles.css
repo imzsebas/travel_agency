@@ -762,3 +762,75 @@ img { display: block; max-width: 100%; }
 .btn--line { background: transparent; color: var(--blanco); box-shadow: none; border: 3px solid var(--amarillo); }
 .btn--line:hover { background: rgba(252,209,22,0.15); box-shadow: none; }
 @media (max-width: 860px) { .game__btns { justify-content: center; } }
+
+
+/* =================== FUNDADORES =================== */
+.founders {
+  position: relative; overflow: hidden;
+  padding: 7rem 6% 0;
+  background: radial-gradient(ellipse at 20% 60%, #1e4fa8 0%, transparent 55%), linear-gradient(180deg, #0b1f4d, #071538);
+  color: var(--blanco);
+}
+.founders__inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 3.5rem; align-items: end; }
+
+/* Foto con círculo amarillo y anillos tricolor detrás */
+.founders__foto { position: relative; align-self: end; display: flex; justify-content: center; }
+.founders__circulo {
+  position: absolute; left: 50%; bottom: 8%; transform: translateX(-50%);
+  width: 92%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #ffe066, var(--amarillo) 60%, #e0b400);
+  box-shadow: 0 0 0 14px var(--azul), 0 0 0 26px var(--rojo), 0 30px 60px rgba(0,0,0,0.4);
+}
+.founders__foto img { position: relative; z-index: 1; width: 100%; max-width: 520px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.45)); }
+.founders__sello {
+  position: absolute; z-index: 2; right: 4%; top: 18%;
+  background: var(--rojo); color: var(--blanco);
+  font-family: var(--titulo); font-weight: 900; font-style: italic; text-transform: uppercase; letter-spacing: 1px;
+  padding: 0.5rem 1.2rem; border-radius: 50px; transform: rotate(8deg);
+  box-shadow: 0 5px 0 #8f0b1a;
+}
+
+.founders__texto { padding-bottom: 6rem; }
+.founders__nombres {
+  font-family: var(--titulo); font-weight: 900; font-style: italic; line-height: 1;
+  font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+  -webkit-text-stroke: 2px var(--marino, #0b1f4d); paint-order: stroke fill;
+  text-shadow: 0 5px 0 rgba(0,0,0,0.35);
+}
+.founders__nombres em { color: var(--amarillo); }
+.founders__cargo {
+  display: inline-block; margin: 1rem 0 1.6rem;
+  font-family: var(--titulo); font-weight: 800; letter-spacing: 1px;
+  color: var(--amarillo); border-bottom: 3px solid var(--amarillo); padding-bottom: 0.2rem;
+}
+.founders__texto p { color: #d6dff5; font-size: 1.1rem; margin-bottom: 1.1rem; }
+.founders__texto .founders__lead { color: var(--blanco); font-size: 1.3rem; font-weight: 700; }
+.founders__chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.4rem 0 1.6rem; }
+.founders__chips li {
+  font-family: var(--titulo); font-weight: 800; font-size: 0.9rem;
+  padding: 0.5rem 1.1rem; border-radius: 50px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.35);
+}
+.founders__chips li:nth-child(3n+1) { border-color: var(--amarillo); }
+.founders__chips li:nth-child(3n+2) { border-color: #4f8ff0; }
+.founders__chips li:nth-child(3n) { border-color: var(--rojo); }
+.founders__frase {
+  font-family: var(--script, "Kaushan Script", cursive); font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1.25;
+  color: var(--amarillo); margin: 1.6rem 0; padding-left: 1.2rem; border-left: 5px solid var(--rojo);
+  transform: rotate(-1.5deg);
+}
+.founders__cierre { display: flex; align-items: center; gap: 0.7rem; font-weight: 800; color: var(--blanco) !important; font-size: 1.15rem !important; }
+.founders__cierre svg { width: 30px; height: 30px; flex-shrink: 0; fill: none; stroke: var(--amarillo); stroke-width: 1.8; stroke-linejoin: round; }
+
+@media (max-width: 900px) {
+  .founders { padding-top: 5rem; }
+  .founders__inner { grid-template-columns: 1fr; gap: 2rem; }
+  .founders__texto { order: -1; padding-bottom: 0; text-align: center; }
+  .founders__chips { justify-content: center; }
+  .founders__frase { border-left: 0; padding-left: 0; }
+  .founders__cierre { justify-content: center; }
+  .founders__foto img { max-width: 380px; }
+}
+.founders .founders__texto .eyebrow { color: var(--azul); }
+.founders__sello { right: auto; left: 0; top: 24%; transform: rotate(-8deg); }
+@media (max-width: 900px) { .founders__sello { left: 2%; top: 20%; } }
+@media (max-width: 900px) { .founders__sello { top: auto; bottom: 14%; left: 50%; transform: translateX(-50%) rotate(-6deg); } }

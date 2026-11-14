@@ -10,13 +10,21 @@
    MODO PRUEBA: los datos se guardan solo en este navegador
    (sirve para probar con varias pestañas en tu computador).
    ========================================================= */
-const SUPABASE_URL = "https://fbmiazcvouagbrrswyfl.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZibWlhemN2b3VhZ2JycnN3eWZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ2OTQxOTMsImV4cCI6MjExMDI3MDE5M30.xf5C0FrFQR0xZjxkBtEwAk_Fd5YuCVR8Kb88s550BhE";
+const SUPABASE_URL = "https://fbmiazcvouagbrrswyfl.supabase.co";   // proyecto jdp-sn-quiz
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZibWlhemN2b3VhZ2JycnN3eWZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ2OTQxOTMsImV4cCI6MjExMDI3MDE5M30.xf5C0FrFQR0xZjxkBtEwAk_Fd5YuCVR8Kb88s550BhE";   // llave pública (anon), es seguro tenerla aquí
 
 /* --------------------------------------------------------- */
 const QuizDB = (() => {
-  const usarSupabase = SUPABASE_URL && SUPABASE_KEY && window.supabase;
+  const configurado = Boolean(SUPABASE_URL && SUPABASE_KEY);
+  const usarSupabase = configurado && window.supabase;
   const TABLA = "players";
+
+  /* ---------------- ERROR: hay llaves pero no cargó la librería ---------------- */
+  if (configurado && !window.supabase) {
+    console.error("[QuizDB] No se pudo cargar la librería de Supabase (revisa internet o bloqueadores).");
+    const falla = async () => { throw new Error("Supabase library not loaded"); };
+    return { modo: "error", ordenar: (l) => l, join: falla, update: falla, get: async () => null, list: async () => [], subscribe() {}, reset: falla };
+  }
 
   // Ordena: más puntos primero; si empatan, el que llegó antes a ese puntaje
   function ordenar(lista) {
@@ -54,7 +62,7 @@ const QuizDB = (() => {
       subscribe(callback) {
         sb.channel("players-live")
           .on("postgres_changes", { event: "*", schema: "public", table: TABLA }, () => callback())
-          .subscribe();
+          .subscribe((estado) => console.log("[QuizDB] realtime:", estado));
         setInterval(callback, 5000); // respaldo por si se corta la conexión en vivo
       },
       async reset() {

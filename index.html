@@ -15,7 +15,7 @@
   <!-- Mapa (Leaflet) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
 
@@ -32,6 +32,7 @@
       <a href="#santarosa">Santa Rosa</a>
       <a href="#nevado">Nevado del Ruiz</a>
       <a href="#mapa" data-i18n="nav_map">Mapa</a>
+      <a href="#fundadores" data-i18n="nav_founders">Fundadores</a>
       <a href="#juego" data-i18n="nav_game">Juego</a>
     </nav>
 
@@ -117,6 +118,42 @@
     </div>
   </section>
 
+  <!-- ===================== FUNDADORES ===================== -->
+  <section class="founders" id="fundadores">
+    <div class="founders__inner">
+      <div class="founders__foto reveal">
+        <div class="founders__circulo"></div>
+        <img src="fundadores.webp" alt="Juan Diego Páez y Sebastián Núñez, fundadores de JDP &amp; SN Travel Agency" />
+        <span class="founders__sello" data-i18n="founders_sello">Fundadores</span>
+      </div>
+
+      <div class="founders__texto reveal">
+        <p class="eyebrow" data-i18n="founders_eyebrow">Quiénes somos</p>
+        <h2 class="founders__nombres">JUAN DIEGO PÁEZ <em>&amp;</em> SEBASTIÁN NÚÑEZ</h2>
+        <p class="founders__cargo" data-i18n="founders_cargo">Fundadores | JDP &amp; SN Travel Agency</p>
+
+        <p class="founders__lead" data-i18n="founders_lead">Dos mentes brillantes, una sociedad internacional y una misión: conquistar el mundo... empezando por Colombia.</p>
+
+        <ul class="founders__chips">
+          <li data-i18n="fc1">Visionarios</li>
+          <li data-i18n="fc2">Emprendedores</li>
+          <li data-i18n="fc3">Estrategas del turismo</li>
+          <li data-i18n="fc4">Multimillonarios en ideas</li>
+          <li data-i18n="fc5">Viajeros de corazón</li>
+        </ul>
+
+        <p data-i18n="founders_jet">No tenemos un jet privado (todavía), pero sí tenemos los mejores destinos para ofrecerte.</p>
+
+        <blockquote class="founders__frase" data-i18n="founders_frase">Viajar no es gastar dinero, es invertir en historias que contar.</blockquote>
+
+        <p class="founders__cierre">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 14l8-2 4-8 2 1-2 7 6-1 2 2-6 3 1 6-2 1-4-6-8 1z"/></svg>
+          <span data-i18n="founders_cierre">No vendemos simples viajes, diseñamos experiencias inolvidables.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== JUEGO CON QR ===================== -->
   <section class="game" id="juego">
     <div class="game__inner reveal">
@@ -162,6 +199,6 @@
   <audio id="bgMusic" src="musica/fondo.mp3" loop preload="none"></audio>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

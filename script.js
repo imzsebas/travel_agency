@@ -17,6 +17,15 @@ const UI = {
     nav_intro: "La idea",
     nav_map: "Mapa",
     nav_game: "Juego",
+    nav_founders: "Fundadores",
+    founders_sello: "Fundadores",
+    founders_eyebrow: "Quiénes somos",
+    founders_cargo: "Fundadores | JDP & SN Travel Agency",
+    founders_lead: "Dos mentes brillantes, una sociedad internacional y una misión: conquistar el mundo... empezando por Colombia.",
+    fc1: "Visionarios", fc2: "Emprendedores", fc3: "Estrategas del turismo", fc4: "Multimillonarios en ideas", fc5: "Viajeros de corazón",
+    founders_jet: "No tenemos un jet privado (todavía), pero sí tenemos los mejores destinos para ofrecerte.",
+    founders_frase: "Viajar no es gastar dinero, es invertir en historias que contar.",
+    founders_cierre: "No vendemos simples viajes, diseñamos experiencias inolvidables.",
     game_eyebrow: "Juego",
     game_title: "¿Quién sabe más de Colombia?",
     game_desc: "Pon a prueba lo que aprendiste: escanea el código, escribe tu nombre y responde 10 preguntas en inglés. Cada acierto suma 100 puntos y el ranking se ve en vivo.",
@@ -50,6 +59,15 @@ const UI = {
     nav_intro: "The idea",
     nav_map: "Map",
     nav_game: "Game",
+    nav_founders: "Founders",
+    founders_sello: "Founders",
+    founders_eyebrow: "Who we are",
+    founders_cargo: "Founders | JDP & SN Travel Agency",
+    founders_lead: "Two brilliant minds, one international partnership and a single mission: to conquer the world... starting with Colombia.",
+    fc1: "Visionaries", fc2: "Entrepreneurs", fc3: "Tourism strategists", fc4: "Billionaires in ideas", fc5: "Travelers at heart",
+    founders_jet: "We don't have a private jet (yet), but we do have the best destinations to offer you.",
+    founders_frase: "Traveling isn't spending money, it's investing in stories to tell.",
+    founders_cierre: "We don't sell simple trips, we design unforgettable experiences.",
     game_eyebrow: "Game",
     game_title: "Who knows more about Colombia?",
     game_desc: "Test what you learned: scan the code, type your name and answer 10 questions. Every correct answer is worth 100 points and the ranking updates live.",
@@ -396,7 +414,7 @@ $$("a", menu).forEach(a => a.addEventListener("click", () => {
 const secciones = [
   ["inicio", "Inicio"], ["intro", "Intro"],
   ...LUGARES.map(l => [l.id, l.es.nombre]),
-  ["mapa", "Mapa"], ["juego", "Juego"], ["cierre", "Fin"]
+  ["mapa", "Mapa"], ["fundadores", "Fundadores"], ["juego", "Juego"], ["cierre", "Fin"]
 ];
 $("#dots").innerHTML = secciones.map(([id, n]) => `<a href="#${id}" data-id="${id}"><span>${n}</span></a>`).join("");
 
